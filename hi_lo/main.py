@@ -1,6 +1,7 @@
 from random import randint
+from re import L
 
-points = 300
+points = 75
 
 again = "y"
 
@@ -11,6 +12,9 @@ while again == "y":
 
     print(f"The card is: {present_card}")
     h_or_l = (input(f"Higher or lower? [h/l]: "))
+
+
+
         
     if present_card < cards and h_or_l == "h":
             print(f"Next card was: {cards}")
@@ -22,9 +26,14 @@ while again == "y":
             points += 100
             print(f"Your Score Is: {points}")
             again = input("Play again? [y/n]")
+
     else:
             print(f"Next card was: {cards}")
             points -= 75
             print(f"Your Score Is: {points}")
+            if points <= 0:
+                print("Game Over")
+                again = "n"
+                break
             again = input("Play again? [y/n]")
     print("")
